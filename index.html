@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Git Visualizer</title>
+  <link rel="stylesheet" href="style.css?v=6">
+</head>
+<body class="app">
+  <header class="top">
+    <h1>🌳 Git Visualizer</h1>
+    <p>Ketik command git di terminal bawah, lihat hasilnya di sini.</p>
+  </header>
+
+  <main class="stage">
+    <aside class="card lessons-card">
+      <div class="card-head"><h2>Misi belajar</h2><span id="progress" class="muted"></span></div>
+      <ol id="lessons" class="lessons"></ol>
+    </aside>
+
+    <section class="visual">
+      <div class="card zones-card">
+        <div class="zones">
+          <div class="zone">
+            <h3>📁 Working Directory</h3>
+            <p class="sub">folder kerjamu</p>
+            <div id="z-work" class="chips"></div>
+          </div>
+          <div class="arrow" aria-hidden="true"><span>git add</span>➜</div>
+          <div class="zone">
+            <h3>🧺 Staging Area</h3>
+            <p class="sub">siap di-commit</p>
+            <div id="z-stage" class="chips"></div>
+          </div>
+          <div class="arrow" aria-hidden="true"><span>git commit</span>➜</div>
+          <div class="zone">
+            <h3>🗄️ Repository</h3>
+            <p class="sub" id="z-repo-title">isi commit terakhir</p>
+            <div id="z-repo" class="chips"></div>
+          </div>
+        </div>
+        <ul class="legend">
+          <li><i class="chip untracked"></i> baru, belum dilacak</li>
+          <li><i class="chip modified"></i> berubah</li>
+          <li><i class="chip staged"></i> sudah di-stage</li>
+          <li><i class="chip clean"></i> aman / tersimpan</li>
+        </ul>
+      </div>
+
+      <div class="graphs">
+        <div class="card graph-card">
+          <div class="card-head"><h2>💻 Riwayat di komputermu</h2></div>
+          <div id="graph-scroll" class="graph-scroll">
+            <p id="graph-empty" class="empty big">Belum ada commit. Ikuti misi di sebelah kiri 👈</p>
+            <svg id="graph" role="img" aria-label="Graf commit git"></svg>
+          </div>
+        </div>
+
+        <div class="link" aria-hidden="true">
+          <span>git push<b>➜</b></span>
+          <span><b>⬅</b>fetch / pull</span>
+        </div>
+
+        <div class="card graph-card">
+          <div class="card-head">
+            <h2>☁️ Remote (GitHub)</h2>
+            <span class="actions">
+              <button type="button" id="btn-friend" title="Simulasi teman mengirim commit ke remote">👥 Teman push</button>
+              <button type="button" id="btn-wipe" title="Kosongkan folder lokal, remote tetap ada (untuk latihan git clone)">🗑 Hapus lokal</button>
+            </span>
+          </div>
+          <p id="remote-url" class="sub"></p>
+          <div id="hub-scroll" class="graph-scroll">
+            <p id="hub-empty" class="empty big">Remote masih kosong. Kirim dengan git push 👆</p>
+            <svg id="hub-graph" role="img" aria-label="Graf commit di remote"></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="card dock">
+    <div class="card-head">
+      <h2>Terminal</h2>
+      <span class="actions">
+        <button type="button" id="btn-help">help</button>
+        <button type="button" id="btn-reset">↺ Ulang dari awal</button>
+      </span>
+    </div>
+    <div id="term" class="term" tabindex="-1" aria-live="polite"></div>
+    <form id="term-form" class="term-input" autocomplete="off">
+      <label for="cmd" id="prompt" class="prompt"></label>
+      <input id="cmd" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="ketik command, contoh: git init">
+    </form>
+  </section>
+
+  <script src="git-engine.js?v=6"></script>
+  <script src="visualizer.js?v=6"></script>
+  <script src="app.js?v=6"></script>
+</body>
+</html>

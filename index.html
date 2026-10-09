@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Git Visualizer</title>
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body class="app">
   <header class="top">
     <h1>🌳 Git Visualizer</h1>
     <p>Ketik command git di terminal bawah, lihat hasilnya di sini.</p>
+    <button type="button" id="btn-layout" class="desk-only" title="Kembalikan ukuran semua kotak">⟲ Reset tata letak</button>
   </header>
 
   <main class="stage">
@@ -17,6 +18,8 @@
       <div class="card-head"><h2>Misi belajar</h2><span id="progress" class="muted"></span></div>
       <ol id="lessons" class="lessons"></ol>
     </aside>
+
+    <div class="gutter gv" role="separator" aria-orientation="vertical" aria-label="Ubah lebar panel misi" tabindex="0" data-axis="x" data-target=".lessons-card" data-var="--col-left" data-dir="1" data-min="200" data-max="560"></div>
 
     <section class="visual">
       <div class="card zones-card">
@@ -47,8 +50,10 @@
         </ul>
       </div>
 
+      <div class="gutter gh" role="separator" aria-orientation="horizontal" aria-label="Ubah tinggi kotak zona file" tabindex="0" data-axis="y" data-target=".zones-card" data-var="--zones-h" data-dir="1" data-min="90" data-max="520"></div>
+
       <div class="graphs">
-        <div class="card graph-card">
+        <div class="card graph-card" id="card-local">
           <div class="card-head"><h2>💻 Riwayat di komputermu</h2></div>
           <div id="graph-scroll" class="graph-scroll">
             <p id="graph-empty" class="empty big">Belum ada commit. Ikuti misi di sebelah kiri 👈</p>
@@ -61,7 +66,9 @@
           <span><b>⬅</b>fetch / pull</span>
         </div>
 
-        <div class="card graph-card">
+        <div class="gutter gv" role="separator" aria-orientation="vertical" aria-label="Ubah lebar graf lokal dan remote" tabindex="0" data-axis="x" data-target="#card-local" data-pair="#card-remote" data-var="--gl" data-var2="--gr" data-dir="1" data-min="200"></div>
+
+        <div class="card graph-card" id="card-remote">
           <div class="card-head">
             <h2>☁️ Remote (GitHub)</h2>
             <span class="actions">
@@ -79,6 +86,8 @@
     </section>
   </main>
 
+  <div class="gutter gh gdock" role="separator" aria-orientation="horizontal" aria-label="Ubah tinggi terminal" tabindex="0" data-axis="y" data-target=".dock" data-var="--dock-h" data-dir="-1" data-min="120" data-max="700"></div>
+
   <section class="card dock">
     <div class="card-head">
       <h2>Terminal</h2>
@@ -94,8 +103,9 @@
     </form>
   </section>
 
-  <script src="git-engine.js?v=6"></script>
-  <script src="visualizer.js?v=6"></script>
-  <script src="app.js?v=6"></script>
+  <script src="git-engine.js?v=8"></script>
+  <script src="visualizer.js?v=8"></script>
+  <script src="app.js?v=8"></script>
+  <script src="resizer.js?v=8"></script>
 </body>
 </html>

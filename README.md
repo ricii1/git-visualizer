@@ -27,3 +27,10 @@ Remote simulasi (GitHub): `remote add origin`, `push` (`-u`), `fetch`, `pull`, `
 Pembantu: `touch`, `edit`, `rm`, `ls`, `clear`, `help`.
 
 Batasan: konflik merge tidak disimulasikan, hanya satu remote (`origin`) yang disimulasikan di memori, bukan koneksi sungguhan.
+
+## Mengubah ukuran kotak
+
+Di layar lebar, garis pemisah antar kotak bisa diseret (panel misi, zona file, graf lokal/remote, terminal).
+Bisa juga lewat keyboard (fokus ke garis dengan Tab, lalu tombol panah, Shift = lompat lebih besar).
+Klik dua kali pada garis untuk mengembalikan ukurannya, atau pakai tombol "Reset tata letak".
+Ukuran disimpan di browser masing-masing murid (localStorage).
